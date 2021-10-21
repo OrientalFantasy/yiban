@@ -66,7 +66,7 @@ def getTimePeriod() -> int:
         return 1
     elif period("12:00:00") < nowTime <= period("14:30:00"):    # 午检
         return 2
-    elif period("19:30:00") < nowTime <= period("19:30:00"):    # 晚检
+    elif period("19:30:00") < nowTime <= period("21:30:00"):    # 晚检
         return 3
     else:
         return 0    # 未到时间
