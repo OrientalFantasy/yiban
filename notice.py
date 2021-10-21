@@ -23,6 +23,7 @@ import requests
 import config
 
 
+
 class Notice:
 
     def __init__(self, admin: dict, account: dict):
@@ -140,6 +141,6 @@ class Notice:
             print(message)
 
     @staticmethod
-    def saveLocal(message):
+    def saveLocal(message: str):
         with open("data/result.log", mode="a+", encoding="utf-8") as w:
             w.write(message+"\n")

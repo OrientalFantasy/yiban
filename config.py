@@ -23,15 +23,23 @@
 #     "mail": "通知邮箱(非必要)",
 #     "pushToken": "Push Plus Token(非必要)"
 #     "notice": "local"(必要)    (通知方式，local：本地记录，mail：邮件通知，pp：Push Plus推送)，默认local
-# }
+# },
 
-# 多账号则用列表
 # ==========================================================
 
 import random
 
+
+
 # 管理员设置
-admin = {}
+admin = {
+    "mail": {
+        "sendMail": "",     # 发送人邮箱
+        "authCode": "",     # 发送人邮箱授权码
+        "smtpServer": "",   # 邮件服务器
+        "port": ""          # 端口号
+    }
+}
 
 # 账号设置
 account = []

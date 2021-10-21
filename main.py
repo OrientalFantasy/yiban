@@ -46,63 +46,6 @@ for ac in config.account:
             auth = yb.auth()
 
             if auth["code"] == 0:
-                # 位置签到
-                yb.photoRequirements()
-                yb.deviceState()
-                yb.signPostion()
-                ns_result = yb.nightAttendance(config.address)
-                
-                # 如果签到成功则发送邮件
-                if ns_result["code"] == 0:
-                    nick = ac.get("nick")
-                    sgin_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time())))
-                    address = json.loads(config.address)["Address"]
-                    result = {
-	                    "nick": nick,
-	                    "status": "位置签到成功",
-	                    "sgin_time": sgin_time,
-                        "address": address
-                        }
-                    notice.send(json.dumps(result,ensure_ascii=False))
-                    # 设置间隔时间
-                    time.sleep(3)
-
-                    # result = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time()))) + " 表单和位置签到提交成功 url: " + share_url + " 位置: " + json.loads(config.address)["Address"] + "\n"
-                    # notice.send(result)
-                
-                # 如果运行程序时已签到，则写入result.log
-                elif ns_result["code"] != 0:
-                    nick = ac.get("nick")
-                    sgin_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time())))
-                    address = json.loads(config.address)["Address"]
-                    result = {
-	                    "nick": nick,
-	                    "status": "晚检防漏",
-	                    "sgin_time": sgin_time,
-                        "address": address
-                        }
-                    notice.saveLocal(json.dumps(result,ensure_ascii=False))
-                
-                # 签到失败发邮件提醒    
-                else:
-                    nick = ac.get("nick")
-                    sgin_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time())))
-                    address = json.loads(config.address)["Address"]
-                    result = {
-	                    "nick": nick,
-	                    "status": "位置签到失败",
-	                    "sgin_time": sgin_time,
-                        "address": address
-                        }
-                    notice.send(json.dumps(result,ensure_ascii=False))
-                    # 设置间隔时间
-                    time.sleep(3)
-                    # result = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(int(time.time())) + "签到失败，请检查\n")
-                    # notice.send(result)
-
-
-
-
                 timePeriod = util.fromIntGetTimePeriod(nowPeriod)
                 now_task = yb.getUncompletedListTime(timePeriod[0], timePeriod[1])
 
