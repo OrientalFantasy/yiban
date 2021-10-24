@@ -196,7 +196,8 @@ for ac in config.account:
                 status = nick + "状态异常！请检查易班校本化授权！" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time())))
                 print(status)
                 print(e)
-                Notice.saveLocal(str(e + status))
+                log = str(e) + str(status)
+                Notice.saveLocal(log)
             
     else:
         print("未到签到时间")
