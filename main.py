@@ -37,6 +37,7 @@ for ac in config.account:
 
     if nowPeriod != 0:
         login = yb.login()
+        time.sleep(3)
 
         if (login["response"]) != 100:
             print(login["message"])
@@ -194,11 +195,19 @@ for ac in config.account:
 
             except Exception as e:
                 nick = ac.get("nick")
+                sgin_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time())))
                 status = nick + "状态异常！请检查易班校本化授权！" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time())))
                 print(status)
                 print(e)
                 log = str(e) + str(status)
                 Notice.saveLocal(log)
+                result = {
+                        "nick": nick,
+                        "status": status,
+                        "sgin_time": sgin_time,
+                        "address": address
+                        }
+                notice.send(json.dumps(result,ensure_ascii=False))
             
     else:
         print("未到签到时间")

@@ -111,6 +111,7 @@ class Notice:
             return True
 
         except Exception as e:
+            e = str(e)
             print("发送失败，转为本地记录")
             print(e)
             Notice.saveLocal(e)
