@@ -205,7 +205,7 @@ for ac in config.account:
                         "nick": nick,
                         "status": status,
                         "sgin_time": sgin_time,
-                        "address": address
+                        "address": "状态异常！请检查易班校本化授权！"
                         }
                 notice.send(json.dumps(result,ensure_ascii=False))
             
