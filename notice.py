@@ -52,7 +52,7 @@ class Notice:
                 <div style="padding: 5px 20px;">
                 <p style="position: relative;color: white;float: left;z-index: 999;background: orange;padding: 5px 30px;margin: -25px auto 0 ;box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.30)">Dear&nbsp; user_name</p>
                 <br>
-                <h3>签到表单于 <font style="text-decoration: none;color: orange ">sgin_time</font> 提交，表单状态：<font style="text-decoration: none;color: orange ">status</font>！</h3>
+                <h3><font style="text-decoration: none;color: orange ">status</font>，签到表单于 <font style="text-decoration: none;color: orange ">sgin_time</font> 提交。</h3>
                 <h3>详细信息：</h3>
                 <div style="border-bottom:#ddd 1px solid;border-left:#ddd 1px solid;padding-bottom:20px;background-color:#eee;margin:15px 0px;padding-left:20px;padding-right:20px;border-top:#ddd 1px solid;border-right:#ddd 1px solid;padding-top:20px">签到状态：status</a><br>晚点名地址：address</div>
                 <div style="text-align: center;">
@@ -84,7 +84,7 @@ class Notice:
             # 获取晚点名地址
             address = message["address"]
             # 邮件标题
-            mail_title = "易班 " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time()))) + " 签到情况"
+            mail_title = status + " 时间 " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(int(time.time())))
             # ssl登录
             smtp = SMTP_SSL(host_server)
             smtp.ehlo(host_server)
